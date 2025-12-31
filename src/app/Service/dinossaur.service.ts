@@ -40,8 +40,12 @@ export class DinosaurService {
     }
   ];
 
-  getAll(): Observable<Dinosaur[]> {
-    return of([...this.dinosaurs]).pipe(delay(500));
+  getAll(): Promise<Dinosaur[]> {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve([...this.dinosaurs]);
+      }, Math.floor(Math.random() * (2000 - 1) + 1));
+    });
   }
 
   add(dino: Dinosaur): void {

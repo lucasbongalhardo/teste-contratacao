@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 
+## Explique e dê soluções para os seguintes bugs
+
+- Após adicionar um Dino novo no sistema a lista não atualiza sempre
+- Ao tentar editar as informações de um Dino, o registro está sendo atualizado antes de clicar no botão update
+- O botão deletar não parece estar funcionando direito
+- Ao cadastrar um Dino, alguns campos parecem estar ficando vazios sem motivo aparente
+- Não é possível atualzar os dados de alguns registros de maneira alguma
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

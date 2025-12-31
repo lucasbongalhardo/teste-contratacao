@@ -24,10 +24,14 @@ export class ParkAdministrationComponent implements OnInit {
     this.load();
   }
 
-  load(): void {
-    this.dinosaurService.getAll().subscribe((data: Dinosaur[]) => {
-      this.dinosaurs = data;
-    });
+  load(): Promise<void> {
+    return new Promise(resolve => {
+      this.dinosaurService.getAll().then((data: Dinosaur[]) => {
+        this.dinosaurs = data;
+        resolve()
+      });
+    }
+    );
   }
 
   save(): void {
@@ -35,8 +39,10 @@ export class ParkAdministrationComponent implements OnInit {
       this.load();
       this.dinosaurService.update(this.form);
     } else {
-      this.load();
-      this.dinosaurService.add(this.form);
+      this.load().then(() => {
+          this.dinosaurService.add(this.form);
+        }
+      );
     }
 
     this.cancel();
