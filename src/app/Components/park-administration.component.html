@@ -1,0 +1,49 @@
+<h2>Dinosaur Park Administration</h2>
+
+<form (ngSubmit)="save()" #dinoForm="ngForm">
+  <input type="text" placeholder="Name" [(ngModel)]="form.name" name="name" required />
+
+  <input type="text" placeholder="Species" [(ngModel)]="form.species" required />
+
+  <input type="text" placeholder="Enclosure" [(ngModel)]="form.enclosure" name="enclosure" required />
+
+  <select [(ngModel)]="form.dangerLevel" name="dangerLevel">
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+  </select>
+
+  <button type="submit">
+    {{ isEditing ? 'Update' : 'Add' }}
+  </button>
+
+  <button type="button" (click)="cancel()" *ngIf="isEditing">
+    Cancel
+  </button>
+</form>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Species</th>
+      <th>Enclosure</th>
+      <th>Danger</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dino of dinosaurs; let i = index">
+      <td>{{ dino.name }}</td>
+      <td>{{ dino.species }}</td>
+      <td>{{ dino.enclosure }}</td>
+      <td>{{ dino.dangerLevel }}</td>
+      <td>
+        <button (click)="edit(dino)">Edit</button>
+        <button (click)="remove(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
